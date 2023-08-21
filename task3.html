@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/nullstyle.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>task3</title>
+	</head>
+	<body>
+		<main class="page">
+			<div class="page__container">
+				<div class="task">
+					<div class="task__condition text">
+						Задача 4. Наперед задано у скрипті масив зі списком бажань. Після завантаження сторінки випадковим чином вибираються 3 і відображаються у окремих div (їх
+						треба створити і додати на сторінку)
+					</div>
+					<div class="wishes"></div>
+				</div>
+				<script>
+					function getRandWishes(wishes, minNum, maxNum, wishesCount) {
+						let randIndx
+						let randWishes = []
+						for (let i = 0; i < wishesCount; ) {
+							randIndx = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+							if (!randWishes.includes(wishes[randIndx])) {
+								randWishes.push(wishes[randIndx])
+								i++
+							}
+						}
+						return randWishes
+					}
+					function createWishes(wishes, wishesCount) {
+						let blockWithWishes = document.querySelector(".wishes")
+						for (let i = 0; i < wishesCount; i++) {
+							//працює
+							let newDiv = document.createElement("div")
+							newDiv.innerText = wishes[i]
+							blockWithWishes.prepend(newDiv)
+						}
+					}
+
+					let wishesCount = 3
+					let wishes = ["новий спінінг", "Новий комп", "Тапочки", "воду", "мотоцикл"]
+					window.onload = function () {
+						let threeWishes = getRandWishes(wishes, 0, wishes.length - 1, wishesCount)
+						createWishes(threeWishes, wishesCount)
+					}
+				</script>
+			</div>
+		</main>
+	</body>
+</html>

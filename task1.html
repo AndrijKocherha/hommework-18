@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/nullstyle.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>task1</title>
+	</head>
+	<body>
+		<main class="page">
+			<div class="page__container">
+				<div class="task">
+					<div class="task__condition text">Задача 2. Зробити конвертер валют (курси валют – константи у скрипті)</div>
+				</div>
+				<div class="page__converter converter">
+					<div class="converter__grn">
+						<label for="sumGrn">Cума в гривнях</label>
+						<input value="" id="sumGrn" type="number" />
+					</div>
+					<button class="converter__button button">Конвертувати</button>
+					<div class="converter__dolar-sum"><span>0</span></div>
+					<div class="converter__euro-sum"><span>0</span></div>
+				</div>
+			</div>
+		</main>
+		<script>
+			function veryfyGrnSum(grnSum) {
+				if (grnSum.value < 0) grnSum.value = ""
+			}
+			function convert(grnSum, dolarRate, eurRate) {
+				document.querySelector(".converter__dolar-sum span").innerText = (grnSum / dolarRate).toFixed(2)
+				document.querySelector(".converter__euro-sum span").innerText = (grnSum / eurRate).toFixed(2)
+			}
+			window.onload = function () {
+				let grnSum = document.getElementById("sumGrn")
+				grnSum.oninput = () => veryfyGrnSum(grnSum)
+				document.querySelector(".converter__button").onclick = () => convert(grnSum.value, 36, 42)
+			}
+		</script>
+	</body>
+</html>

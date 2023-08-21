@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/nullstyle.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>task5</title>
+	</head>
+	<body>
+		<main class="page">
+			<div class="page__container">
+				<div class="task">
+					<div class="task__condition text">
+						Задача 6. Користувач задає кількість оцінок і натискає на кнопку «get table». В результаті формується таблиця з input, куди користувач вводить оцінки. Після
+						цього натискає на кнопку “get sum” і знаходить середнє значення.
+					</div>
+				</div>
+				<div class="user-marks">
+					<input value="4" placeholder="Кількість оцінок" class="user-marks__marks-count" type="number" />
+					<button class="user-marks__get-table">get-table</button>
+					<div class="user-marks__table-body"></div>
+					<button class="user-marks__average-mark">поолучити середню оцінку</button>
+				</div>
+			</div>
+		</main>
+		<script>
+			//був змушений використати глобальну змінну щоб не перевіряти чи виконалась вже функція (не хотів щоб можна було створювати багато таблиць обночасно)
+			//створення таблиці ********
+			let hasFuncDone = false
+			function getTable() {
+				if (!hasFuncDone) {
+					let marksCount = parseInt(document.querySelector(".user-marks__marks-count").value)
+					let table = document.createElement("table")
+					table.classList.add("user-marks__table")
+					for (let i = 0; i < marksCount; i++) {
+						let row = document.createElement("tr")
+						for (let j = 0; j < 1; j++) {
+							let column = document.createElement("td")
+							column.innerHTML = `<input placeholder="${i + 1} оцінка " type="number">`
+							row.append(column)
+						}
+						table.append(row)
+					}
+					let g = document.querySelector(".user-marks__table-body")
+					g.append(table)
+				}
+				hasFuncDone = true
+			}
+			// получити середню оцінку ***********
+			function getAverageMark() {
+				let s = 0
+				let inputs = document.querySelectorAll(".user-marks__table input")
+				inputs.forEach((mark) => {
+					if (mark.value < 0) throw new Error("оцінка не можу бути відємною")
+					if (mark.value === "") mark.value = 0
+					s += parseFloat(mark.value)
+				})
+				let avarageMark = s / document.querySelector(".user-marks__marks-count").value
+
+				document.querySelector(".user-marks").append(avarageMark)
+			}
+			document.querySelector(".user-marks__get-table").onclick = getTable
+			document.querySelector(".user-marks__average-mark").onclick = getAverageMark
+		</script>
+	</body>
+</html>

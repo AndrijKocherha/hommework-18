@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/nullstyle.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>task4</title>
+	</head>
+	<body>
+		<main class="page">
+			<div class="page__container">
+				<div class="task">
+					<div class="task__condition text">
+						Задача 5. Користувач задає кількість рядків і стовпців. Відобразити таблицю, у клітинках якої знаходяться числа 1, 2, 3, … Приклад:
+					</div>
+				</div>
+				<div class="user-chart">
+					<div class="user-chart__user-input user-chart__user-input_lines">
+						<label for="linesId">кількість рядків</label>
+						<input value="0" id="linesId" type="number" />
+					</div>
+					<div class="user-chart__user-input user-chart__user-input_columns">
+						<label for="columnsId">кількість стовпців</label>
+						<input value="0" id="columnsId" type="number" />
+					</div>
+					<button class="user-chart__button button">створити таблицю</button>
+					<button class="user-chart__reset button">заново</button>
+				</div>
+			</div>
+		</main>
+		<script>
+			function createChart() {
+				let linesCount = parseInt(document.getElementById("linesId").value)
+				let columnsCount = parseInt(document.getElementById("columnsId").value)
+				let tableMain = document.createElement("table")
+				tableMain.classList.add("user-chart__chart")
+				let cellCount = 1
+
+				for (let i = 0; i < linesCount; i++) {
+					let line = document.createElement("tr")
+					for (let j = 0; j < columnsCount; j++) {
+						let column = document.createElement("td")
+
+						column.innerText = `${cellCount}`
+						line.append(column)
+						cellCount++
+					}
+
+					tableMain.append(line)
+				}
+				document.querySelector(".user-chart").append(tableMain)
+			}
+			function resetChart() {
+				let charts = document.querySelectorAll(".user-chart__chart")
+				charts.forEach((element) => {
+					element.remove()
+				})
+			}
+			window.onload = function () {
+				//let userLinesCount = parseInt(document.getElementById("linesId").value)
+				//let userColumnsCount = parseInt(document.getElementById("columnsId").value)
+				document.querySelector(".user-chart__button").onclick = () => createChart()
+				document.querySelector(".user-chart__reset").onclick = () => resetChart()
+			}
+		</script>
+	</body>
+</html>

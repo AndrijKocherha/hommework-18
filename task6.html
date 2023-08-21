@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/nullstyle.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>task6</title>
+	</head>
+	<body>
+		<main class="page">
+			<div class="page__container">
+				<div class="task">
+					<div class="task__condition text">
+						Задача 7. Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів транспорту (авто, автобус, літак - випадаючий список),
+						харчування (сніданок, обід, вечеря – checkbоx) та одного з 3-х гідів(використати - radio buttons). Ціни визначте самі. Підрахувати загальну вартість.
+					</div>
+				</div>
+				<div class="trip">
+					<div class="select__body">
+						<h5 class="trip__title title">виберіть транспорт</h5>
+						<select>
+							<option value="1000">авто - 1000</option>
+							<option value="800">автобус- 800</option>
+							<option value="3500">літак 3500</option>
+						</select>
+					</div>
+					<div class="select__body">
+						<h5 class="trip__title title">виберіть харчування</h5>
+						<input value="200" name="nutrition" type="checkbox" /> Сніданок - 200 <input value="300" name="nutrition" type="checkbox" /> Обід - 300
+						<input value="350" name="nutrition" type="checkbox" /> Вечеря - 350
+					</div>
+					<div class="select__body">
+						<h5 class="trip__title title">виберіть гіда</h5>
+						<input value="1300" name="guide" type="radio" /> гід Василь - 1300 <input value="1900" name="guide" type="radio" /> гід Петро - 1900
+						<input value="1100" name="guide" type="radio" /> Гід Ігор - 1100
+					</div>
+					<button class="trip__button button">загальна сума</button>
+				</div>
+			</div>
+			<script>
+				function getAllSumForTrip(allInputs, select) {
+					let s = 0
+					for (const inp of allInputs) {
+						if (inp.checked) s += parseFloat(inp.value)
+					}
+					s += parseFloat(select.value)
+					let sumEl = document.createElement("div")
+					sumEl.innerText = s
+					document.querySelector(".trip").append(sumEl)
+				}
+				let allInputs = document.querySelectorAll(".trip input")
+				let select = document.querySelector(".trip select")
+				window.onload = function () {
+					document.querySelector(".trip__button").onclick = () => getAllSumForTrip(allInputs, select)
+				}
+			</script>
+		</main>
+	</body>
+</html>

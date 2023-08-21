@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/nullstyle.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>task0</title>
+	</head>
+	<body>
+		<main class="page">
+			<div class="page__container">
+				<div class="task">
+					<div class="task__condition text">Задача 1. Розробити калькулятор</div>
+				</div>
+				<div class="page__numbers numbers">
+					<div class="numbers__user-numbers">
+						<div class="numbers__number">
+							<label for="n1">First number </label>
+							<input value="0" id="n1" type="number" />
+						</div>
+						<div class="numbers__number">
+							<label for="n2">Second number</label>
+							<input value="0" id="n2" type="number" />
+						</div>
+					</div>
+					<div class="numbers__buttons buttons-types">
+						<button id="addBtn" class="button buttons-types__btn">Додати</button>
+						<button id="subtractionBtn" class="button buttons-types__btn">Відняти</button>
+						<button id="multiplicationBtn" class="button buttons-types__btn">Помножити</button>
+						<button id="divisionBtn" class="button buttons-types__btn">Поділити</button>
+					</div>
+					<div class="numbers__result">0</div>
+				</div>
+			</div>
+		</main>
+		<script>
+			//function add(n1, n2, res) {
+			//	n1 = parseFloat(document.getElementById("n1").value)
+			//	n2 = parseFloat(document.getElementById("n2").value)
+			//	res = document.querySelector(".numbers__result")
+			//	res.innerText = `${n1 + n2}`
+			//}
+			//function subtract(n1, n2, res) {
+			//	n1 = parseFloat(document.getElementById("n1").value)
+			//	n2 = parseFloat(document.getElementById("n2").value)
+			//	res = document.querySelector(".numbers__result")
+
+			//	res.innerText = `${n1 - n2}`
+			//}
+			//function multiplicat(n1, n2, res) {
+			//	n1 = parseFloat(document.getElementById("n1").value)
+			//	n2 = parseFloat(document.getElementById("n2").value)
+			//	res = document.querySelector(".numbers__result")
+
+			//	res.innerText = `${n1 * n2}`
+			//}
+			//function division(n1, n2, res) {
+			//	n1 = parseFloat(document.getElementById("n1").value)
+			//	n2 = parseFloat(document.getElementById("n2").value)
+			//	res = document.querySelector(".numbers__result")
+
+			//	res.innerText = `${n1 / n2}`
+			//}
+
+			//result = document.querySelector(".numbers__result")
+			//const firstNum = parseFloat(document.getElementById("n1").value)
+			//const secondNum = parseFloat(document.getElementById("n2").value)
+			function calculate(action) {
+				n1 = parseFloat(document.getElementById("n1").value)
+				n2 = parseFloat(document.getElementById("n2").value)
+				result = document.querySelector(".numbers__result")
+
+				switch (action) {
+					case "plus":
+						//result = add(n1, n2, result)
+						result.innerText = `${n1 + n2}`
+						break
+					case "minus":
+						//result = subtract(n1, n2, result)
+						result.innerText = `${n1 - n2}`
+						break
+					case "multiply":
+						//result = multiplicat(n1, n2, result)
+						result.innerText = `${n1 * n2}`
+						break
+					case "devide":
+						//result = division(n1, n2, result)
+						result.innerText = `${n1 / n2}`
+						break
+				}
+				//function add(n1, n2, res) {
+				//	res.innerText = `${n1 + n2}`
+				//}
+				//function subtract(n1, n2, res) {
+				//	res.innerText = `${n1 - n2}`
+				//}
+				//function multiplicat(n1, n2, res) {
+				//	res.innerText = `${n1 * n2}`
+				//}
+				//function division(n1, n2, res) {
+				//	res.innerText = ` ${(n1 / n2).toFixed(2)}`
+				//}
+			}
+
+			document.getElementById("addBtn").onclick = () => calculate("plus")
+			document.getElementById("subtractionBtn").onclick = () => calculate("minus")
+			document.getElementById("multiplicationBtn").onclick = () => calculate("multiply")
+			document.getElementById("divisionBtn").onclick = () => calculate("devide")
+		</script>
+	</body>
+</html>

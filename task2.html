@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/nullstyle.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>task2</title>
+	</head>
+	<body>
+		<main class="page">
+			<div class="page__container">
+				<div class="task">
+					<div class="task__condition text">Задача 3. Користувач задає рік народження. Визначити кількість років користувача.</div>
+				</div>
+				<div class="user-age">
+					<label for="age1">Введіть ваш вік</label>
+					<input id="age1" type="number" />
+					<div class="user-age__result"></div>
+				</div>
+			</div>
+		</main>
+		<script>
+			function setUserAge(userYearOfBrith, userAge, curYear) {
+				let difference = curYear - userYearOfBrith
+				if (userYearOfBrith > curYear || difference > 160) userAge.innerText = ""
+				else userAge.innerText = difference
+			}
+			window.onload = function () {
+				let userYearOfBrith = document.getElementById("age1")
+				let userAge = document.querySelector(".user-age__result")
+				let curYear = new Date().getFullYear()
+				userYearOfBrith.oninput = () => setUserAge(userYearOfBrith.value, userAge, curYear)
+			}
+		</script>
+	</body>
+</html>
